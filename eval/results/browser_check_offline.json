@@ -1,0 +1,151 @@
+{
+ "base": "http://127.0.0.1:8765",
+ "checks": [
+  {
+   "name": "status shows Ready",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "rulebook version visible",
+   "ok": true,
+   "detail": "Formula Student Rules 2027 \u2014 Version 1.0 \u00b7 115 pages \u00b7 1263 rules"
+  },
+  {
+   "name": "search box enabled after ready",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "first search under 10 s (submit -> rendered)",
+   "ok": true,
+   "detail": "1033 ms"
+  },
+  {
+   "name": "top result is T 4.11.1",
+   "ok": true,
+   "detail": "T 4.11.1"
+  },
+  {
+   "name": "heading path shown",
+   "ok": true,
+   "detail": "T 4 Cockpit \u203a T 4.11 Driver Egress"
+  },
+  {
+   "name": "full original text shown",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "page reference shown",
+   "ok": true,
+   "detail": "Page 39"
+  },
+  {
+   "name": "applicability badge shown",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "copy code button copies the code",
+   "ok": true,
+   "detail": "T 4.11.1"
+  },
+  {
+   "name": "referenced rules expand with text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "section context loads",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "code lookup renders T 4.11.1",
+   "ok": true,
+   "detail": "32 ms"
+  },
+  {
+   "name": "code lookup labelled as exact",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "unknown code is reported, not substituted",
+   "ok": true,
+   "detail": "No such rule code. No rule with code \u201cT 4.11.9\u201d exists in this rulebook. T 4.11 (Driver Egress) exists; its entries are "
+  },
+  {
+   "name": "cross-page rule complete",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "EV-only provision labelled",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "pages 42 and 43 listed",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "table rendered as HTML with original-image toggle",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "EV filter keeps general brake light rules",
+   "ok": true,
+   "detail": "['T 6.3.2', 'T 6.3.1', 'T 6.3.3', 'IN 11.1.5']"
+  },
+  {
+   "name": "CV filter hides EV 4.1.1",
+   "ok": true,
+   "detail": "['T 11.1.5', 'T 11.1.1', 'S 4.5.3']"
+  },
+  {
+   "name": "no-match message",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "older response never overwrites newer search",
+   "ok": true,
+   "detail": "['T 2.2.1']"
+  },
+  {
+   "name": "PDF pane opens on page link",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "all browser searches under 10 s",
+   "ok": true,
+   "detail": "median 814 ms, max 1847 ms"
+  }
+ ],
+ "latencies_ms": {
+  "How quickly must the driver get out? [all]": 1032.9,
+  "t4.11.1 [all]": 32.1,
+  "T 4.11.9 [all]": 26.3,
+  "T 6.3.1 [all]": 30.4,
+  "A 1.2.8 [all]": 25.4,
+  "brake light [ev]": 780.8,
+  "maximum tractive system voltage [cv]": 981.8,
+  "what is the size of the moon [all]": 1847.1,
+  "which colour is the brake light [all]": 879.5,
+  "how many shutdown buttons [all]": 746.6,
+  "restrictor diameter for E85 [all]": 997.2,
+  "BSPD [all]": 814.1,
+  "penalty for knocking over a cone [all]": 1080.3
+ },
+ "latency_summary_ms": {
+  "n": 13,
+  "median": 814.1,
+  "max": 1847.1
+ },
+ "all_ok": true
+}

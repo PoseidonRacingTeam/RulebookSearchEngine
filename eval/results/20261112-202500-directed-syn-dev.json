@@ -1,0 +1,1378 @@
+{
+ "tag": "directed-syn",
+ "when": "2026-11-12T20:25:00",
+ "split": "dev",
+ "thresholds": {
+  "T_NO_MATCH": -2.5,
+  "T_INCLUDE": -2.5,
+  "DELTA_INCLUDE": 4.0,
+  "DELTA_AMBIGUOUS": 0.5,
+  "FUSION_DENSE_WEIGHT": 10.0,
+  "FUSION_BM25_WEIGHT": 1.0,
+  "RERANK_WITH_EXPANSIONS": true,
+  "BM25_TOP_K": 80,
+  "DENSE_TOP_K": 80,
+  "RERANK_MAX_CANDIDATES": 110
+ },
+ "models": {
+  "embedding": "BAAI/bge-base-en-v1.5",
+  "reranker": "mixedbread-ai/mxbai-rerank-base-v1",
+  "device": "mps"
+ },
+ "engine_load_seconds": 5.2,
+ "first_search_ms": 968.2,
+ "summary": {
+  "all": {
+   "n": 40,
+   "top1": "34/37 (92%)",
+   "coverage_top3": "4/6 (67%)",
+   "negatives_handled": "3/3 (100%)",
+   "inappropriate_matches": 0,
+   "filter_respected": "n/a",
+   "pass": "36/40 (90%)",
+   "latency_ms": {
+    "median": 656.9,
+    "p95": 933.9,
+    "max": 968.6,
+    "n": 40
+   }
+  },
+  "dev": {
+   "n": 40,
+   "top1": "34/37 (92%)",
+   "coverage_top3": "4/6 (67%)",
+   "negatives_handled": "3/3 (100%)",
+   "inappropriate_matches": 0,
+   "filter_respected": "n/a",
+   "pass": "36/40 (90%)",
+   "latency_ms": {
+    "median": 656.9,
+    "p95": 933.9,
+    "max": 968.6,
+    "n": 40
+   }
+  }
+ },
+ "rows": [
+  {
+   "id": 1,
+   "split": "dev",
+   "category": "exact_code",
+   "query": "T 4.11.1",
+   "scope": "all",
+   "type": "code",
+   "top1": "T 4.11.1",
+   "returned": [
+    "T 4.11.1"
+   ],
+   "total_ms": 0.1,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 4.11.1"
+    ]
+   },
+   "corrections": null,
+   "top_score": null,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 2,
+   "split": "dev",
+   "category": "exact_code_spacing",
+   "query": "T4.11.1",
+   "scope": "all",
+   "type": "code",
+   "top1": "T 4.11.1",
+   "returned": [
+    "T 4.11.1"
+   ],
+   "total_ms": 0.1,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 4.11.1"
+    ]
+   },
+   "corrections": null,
+   "top_score": null,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 3,
+   "split": "dev",
+   "category": "exact_code_spacing",
+   "query": "t 4.11.1.",
+   "scope": "all",
+   "type": "code",
+   "top1": "T 4.11.1",
+   "returned": [
+    "T 4.11.1"
+   ],
+   "total_ms": 0.1,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 4.11.1"
+    ]
+   },
+   "corrections": null,
+   "top_score": null,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 4,
+   "split": "dev",
+   "category": "exact_code_spacing",
+   "query": "EV4.1.1",
+   "scope": "all",
+   "type": "code",
+   "top1": "EV 4.1.1",
+   "returned": [
+    "EV 4.1.1"
+   ],
+   "total_ms": 0.1,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "EV 4.1.1"
+    ]
+   },
+   "corrections": null,
+   "top_score": null,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 5,
+   "split": "dev",
+   "category": "exact_code_section",
+   "query": "T 2.2",
+   "scope": "all",
+   "type": "code",
+   "top1": "T 2.2.1",
+   "returned": [
+    "T 2.2.1",
+    "T 2.2.2"
+   ],
+   "total_ms": 0.1,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 2.2.1"
+    ],
+    "must_include": [
+     "T 2.2.1",
+     "T 2.2.2"
+    ]
+   },
+   "corrections": null,
+   "top_score": null,
+   "ok_top1": true,
+   "ok_coverage": true,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 6,
+   "split": "dev",
+   "category": "unknown_code",
+   "query": "T 4.11.9",
+   "scope": "all",
+   "type": "no_match",
+   "top1": null,
+   "returned": [],
+   "total_ms": 0.1,
+   "expect": {
+    "type": "unknown_code"
+   },
+   "corrections": null,
+   "top_score": null,
+   "ok_top1": null,
+   "ok_coverage": null,
+   "ok_negative": true,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 7,
+   "split": "dev",
+   "category": "paraphrase",
+   "query": "How quickly must the driver get out?",
+   "scope": "all",
+   "type": "results",
+   "top1": "T 4.11.1",
+   "returned": [
+    "T 4.11.1"
+   ],
+   "total_ms": 968.2,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 4.11.1"
+    ]
+   },
+   "corrections": [],
+   "top_score": 7.241,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 8,
+   "split": "dev",
+   "category": "paraphrase",
+   "query": "How low can the car sit?",
+   "scope": "all",
+   "type": "results",
+   "top1": "T 2.2.1",
+   "returned": [
+    "T 2.2.1",
+    "T 4.6.1",
+    "T 8.2.1",
+    "T 7.3.1",
+    "T 13.2.1"
+   ],
+   "total_ms": 657.2,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 2.2.1"
+    ]
+   },
+   "corrections": [],
+   "top_score": 2.776,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 9,
+   "split": "dev",
+   "category": "paraphrase_applicability",
+   "query": "What happens if I brake and accelerate together?",
+   "scope": "all",
+   "type": "results",
+   "top1": "T 15.1.4",
+   "returned": [
+    "T 15.1.4",
+    "T 11.6.7",
+    "T 11.6.2",
+    "T 11.6.4",
+    "T 11.6.1",
+    "T 11.6.5",
+    "T 6.1.13",
+    "EV 4.11.7"
+   ],
+   "total_ms": 554.5,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 11.6.1",
+     "T 11.6.2"
+    ],
+    "must_include": [
+     "T 11.6.1",
+     "T 11.6.2"
+    ]
+   },
+   "corrections": [],
+   "top_score": 1.691,
+   "ok_top1": false,
+   "ok_coverage": false,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": false
+  },
+  {
+   "id": 10,
+   "split": "dev",
+   "category": "paraphrase",
+   "query": "which colour is the brake light",
+   "scope": "all",
+   "type": "results",
+   "top1": "T 6.3.2",
+   "returned": [
+    "T 6.3.2"
+   ],
+   "total_ms": 600.5,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 6.3.2"
+    ]
+   },
+   "corrections": [
+    [
+     "colour",
+     "color"
+    ]
+   ],
+   "top_score": 6.664,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 11,
+   "split": "dev",
+   "category": "paraphrase",
+   "query": "how big can the engine be",
+   "scope": "all",
+   "type": "results",
+   "top1": "CV 1.1.1",
+   "returned": [
+    "CV 1.1.1",
+    "CV 1.8.4"
+   ],
+   "total_ms": 727.6,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "CV 1.1.1"
+    ]
+   },
+   "corrections": [],
+   "top_score": 3.864,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 12,
+   "split": "dev",
+   "category": "paraphrase",
+   "query": "how long can the driver change take",
+   "scope": "all",
+   "type": "results",
+   "top1": "D 7.5.9",
+   "returned": [
+    "D 7.5.9",
+    "D 7.5.4",
+    "D 7.5.5",
+    "D 7.5.1",
+    "D 7.5.8",
+    "D 7.5.3",
+    "D 7.5.7",
+    "D 10.2.5"
+   ],
+   "total_ms": 782.9,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "D 7.5.9"
+    ]
+   },
+   "corrections": [],
+   "top_score": 6.531,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 13,
+   "split": "dev",
+   "category": "paraphrase",
+   "query": "where must the master switch be",
+   "scope": "all",
+   "type": "results",
+   "top1": "T 11.2.2",
+   "returned": [
+    "T 11.2.2",
+    "T 11.2.5",
+    "T 11.2.3",
+    "T 11.2.4",
+    "T 11.2.1"
+   ],
+   "total_ms": 405.6,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 11.2.2"
+    ]
+   },
+   "corrections": [],
+   "top_score": 6.885,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 14,
+   "split": "dev",
+   "category": "numeric",
+   "query": "how many shutdown buttons",
+   "scope": "all",
+   "type": "results",
+   "top1": "T 11.4.4",
+   "returned": [
+    "T 11.4.4",
+    "T 11.4.1",
+    "T 11.4.2",
+    "T 11.4.3",
+    "EV 6.1.2",
+    "T 11.4.5",
+    "T 11.4.6",
+    "T 11.4.7"
+   ],
+   "total_ms": 463.4,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 11.4.1"
+    ]
+   },
+   "corrections": [],
+   "top_score": 5.867,
+   "ok_top1": false,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": false
+  },
+  {
+   "id": 15,
+   "split": "dev",
+   "category": "numeric",
+   "query": "what rating do extinguishers need",
+   "scope": "all",
+   "type": "results",
+   "top1": "T 13.4.2",
+   "returned": [
+    "T 13.4.2"
+   ],
+   "total_ms": 760.1,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 13.4.2"
+    ]
+   },
+   "corrections": [],
+   "top_score": 7.697,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 16,
+   "split": "dev",
+   "category": "abbreviation",
+   "query": "BSPD",
+   "scope": "all",
+   "type": "results",
+   "top1": "T 11.6.2",
+   "returned": [
+    "T 11.6.2",
+    "T 11.6.7",
+    "T 11.6.8",
+    "T 11.6.3",
+    "T 11.6.5",
+    "T 11.6.4",
+    "T 11.6.9",
+    "T 11.6.1"
+   ],
+   "total_ms": 484.2,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 11.6.1",
+     "T 11.6.2",
+     "T 11.6.3",
+     "T 11.6.4",
+     "T 11.6.5",
+     "T 11.6.6",
+     "T 11.6.7",
+     "T 11.6.8",
+     "IN 4.1.3"
+    ]
+   },
+   "corrections": [],
+   "top_score": 7.843,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 17,
+   "split": "dev",
+   "category": "abbreviation",
+   "query": "APPS implausibility",
+   "scope": "all",
+   "type": "results",
+   "top1": "T 11.8.9",
+   "returned": [
+    "T 11.8.9",
+    "T 11.8.10",
+    "T 11.8.8"
+   ],
+   "total_ms": 845.3,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 11.8.8",
+     "T 11.8.9"
+    ],
+    "must_include": [
+     "T 11.8.8",
+     "T 11.8.9"
+    ]
+   },
+   "corrections": [],
+   "top_score": 6.568,
+   "ok_top1": true,
+   "ok_coverage": true,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 18,
+   "split": "dev",
+   "category": "abbreviation",
+   "query": "HVD removal time",
+   "scope": "all",
+   "type": "results",
+   "top1": "EV 4.8.2",
+   "returned": [
+    "EV 4.8.2",
+    "EV 4.8.1",
+    "EV 4.8.5",
+    "EV 4.9.1"
+   ],
+   "total_ms": 656.6,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "EV 4.8.2"
+    ]
+   },
+   "corrections": [],
+   "top_score": 5.862,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 19,
+   "split": "dev",
+   "category": "abbreviation",
+   "query": "TSMP banana jacks",
+   "scope": "all",
+   "type": "results",
+   "top1": "EV 4.7.3",
+   "returned": [
+    "EV 4.7.3",
+    "EV 4.7.8"
+   ],
+   "total_ms": 933.9,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "EV 4.7.3"
+    ]
+   },
+   "corrections": [],
+   "top_score": 5.517,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 20,
+   "split": "dev",
+   "category": "typo",
+   "query": "ground clearence",
+   "scope": "all",
+   "type": "results",
+   "top1": "T 2.2.1",
+   "returned": [
+    "T 2.2.1",
+    "T 2.2.2"
+   ],
+   "total_ms": 728.9,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 2.2.1"
+    ]
+   },
+   "corrections": [
+    [
+     "clearence",
+     "clearance"
+    ]
+   ],
+   "top_score": 8.051,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 21,
+   "split": "dev",
+   "category": "typo",
+   "query": "fire extingisher rating",
+   "scope": "all",
+   "type": "results",
+   "top1": "T 13.4.2",
+   "returned": [
+    "T 13.4.2"
+   ],
+   "total_ms": 721.6,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 13.4.2"
+    ]
+   },
+   "corrections": [
+    [
+     "extingisher",
+     "extinguisher"
+    ]
+   ],
+   "top_score": 8.455,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 22,
+   "split": "dev",
+   "category": "typo",
+   "query": "brake ligth colour",
+   "scope": "all",
+   "type": "results",
+   "top1": "T 6.3.2",
+   "returned": [
+    "T 6.3.2"
+   ],
+   "total_ms": 498.2,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 6.3.2"
+    ]
+   },
+   "corrections": [
+    [
+     "ligth",
+     "light"
+    ],
+    [
+     "colour",
+     "color"
+    ]
+   ],
+   "top_score": 7.143,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 23,
+   "split": "dev",
+   "category": "numeric",
+   "query": "minimum wheelbase",
+   "scope": "all",
+   "type": "results",
+   "top1": "T 2.9.1",
+   "returned": [
+    "T 2.9.1",
+    "T 2.9.2"
+   ],
+   "total_ms": 707.7,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 2.9.1"
+    ]
+   },
+   "corrections": [],
+   "top_score": 6.035,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 24,
+   "split": "dev",
+   "category": "numeric",
+   "query": "catch can minimum volume",
+   "scope": "all",
+   "type": "results",
+   "top1": "T 7.2.5",
+   "returned": [
+    "T 7.2.5",
+    "T 7.2.6"
+   ],
+   "total_ms": 604.7,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 7.2.5",
+     "T 7.2.6"
+    ],
+    "must_include": [
+     "T 7.2.5",
+     "T 7.2.6"
+    ]
+   },
+   "corrections": [],
+   "top_score": 6.508,
+   "ok_top1": true,
+   "ok_coverage": true,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 25,
+   "split": "dev",
+   "category": "negation",
+   "query": "is brake by wire allowed",
+   "scope": "all",
+   "type": "results",
+   "top1": "T 6.1.6",
+   "returned": [
+    "T 6.1.6"
+   ],
+   "total_ms": 790.9,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 6.1.6"
+    ]
+   },
+   "corrections": [],
+   "top_score": 7.04,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 26,
+   "split": "dev",
+   "category": "numeric",
+   "query": "max weight of the hybrid energy storage",
+   "scope": "all",
+   "type": "results",
+   "top1": "CV 5.2.3",
+   "returned": [
+    "CV 5.2.3"
+   ],
+   "total_ms": 638.2,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "CV 5.2.3"
+    ]
+   },
+   "corrections": [],
+   "top_score": 7.826,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 27,
+   "split": "dev",
+   "category": "numeric_exception",
+   "query": "restrictor diameter for E85",
+   "scope": "all",
+   "type": "results",
+   "top1": "CV 1.7.2",
+   "returned": [
+    "CV 1.7.2"
+   ],
+   "total_ms": 900.7,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "CV 1.7.2"
+    ]
+   },
+   "corrections": [],
+   "top_score": 6.29,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 28,
+   "split": "dev",
+   "category": "paraphrase",
+   "query": "how old must team members be",
+   "scope": "all",
+   "type": "results",
+   "top1": "A 4.2.9",
+   "returned": [
+    "A 4.2.9"
+   ],
+   "total_ms": 681.6,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "A 4.2.9"
+    ]
+   },
+   "corrections": [],
+   "top_score": 9.703,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 29,
+   "split": "dev",
+   "category": "ev_cv",
+   "query": "maximum tractive system voltage",
+   "scope": "all",
+   "type": "results",
+   "top1": "EV 4.1.1",
+   "returned": [
+    "EV 4.1.1",
+    "EV 4.1.2",
+    "EV 5.3.4",
+    "EV 4.7.6",
+    "EV 4.5.2",
+    "EV 4.9.1",
+    "EV 5.8.11",
+    "EV 4.2.1"
+   ],
+   "total_ms": 634.4,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "EV 4.1.1"
+    ]
+   },
+   "corrections": [],
+   "top_score": 7.276,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 30,
+   "split": "dev",
+   "category": "ev_cv",
+   "query": "maximum voltage in the low voltage system",
+   "scope": "all",
+   "type": "results",
+   "top1": "T 11.1.2",
+   "returned": [
+    "T 11.1.2",
+    "T 11.1.5"
+   ],
+   "total_ms": 631.3,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 11.1.2"
+    ]
+   },
+   "corrections": [],
+   "top_score": 8.695,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 31,
+   "split": "dev",
+   "category": "ev_cv",
+   "query": "noise test engine speed",
+   "scope": "all",
+   "type": "results",
+   "top1": "CV 3.2.1",
+   "returned": [
+    "CV 3.2.1",
+    "IN 10.1.6",
+    "IN 10.1.2",
+    "IN 10.1.3",
+    "CV 3.2.2",
+    "IN 10.1.9",
+    "IN 10.1.4",
+    "IN 10.1.5"
+   ],
+   "total_ms": 833.7,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "CV 3.2.1",
+     "IN 10.2.1",
+     "IN 10.2.2",
+     "IN 10.2.3"
+    ]
+   },
+   "corrections": [],
+   "top_score": 5.388,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 32,
+   "split": "dev",
+   "category": "ev_cv",
+   "query": "rain test requirements",
+   "scope": "all",
+   "type": "results",
+   "top1": "IN 9.2.1",
+   "returned": [
+    "IN 9.2.1",
+    "IN 9.2.2",
+    "IN 9.2.3",
+    "IN 9.1.1",
+    "IN 9.2.7",
+    "IN 9.2.6",
+    "IN 9.2.4",
+    "IN 9.2.5"
+   ],
+   "total_ms": 805.7,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "IN 9.1.1",
+     "IN 9.2.1",
+     "IN 9.2.2",
+     "IN 9.2.3",
+     "IN 9.2.4",
+     "IN 9.2.5"
+    ]
+   },
+   "corrections": [],
+   "top_score": 3.378,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 33,
+   "split": "dev",
+   "category": "ev_cv",
+   "query": "how many ESOs",
+   "scope": "all",
+   "type": "results",
+   "top1": "A 4.3.1",
+   "returned": [
+    "A 4.3.1",
+    "A 4.4.2",
+    "A 4.3.3",
+    "T 14.9.1",
+    "A 4.3.2"
+   ],
+   "total_ms": 325.9,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "A 4.3.1"
+    ]
+   },
+   "corrections": [],
+   "top_score": 4.994,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 34,
+   "split": "dev",
+   "category": "absent",
+   "query": "what is the size of the moon",
+   "scope": "all",
+   "type": "no_match",
+   "top1": null,
+   "returned": [],
+   "total_ms": 871.8,
+   "expect": {
+    "type": "no_match"
+   },
+   "corrections": [],
+   "top_score": null,
+   "ok_top1": null,
+   "ok_coverage": null,
+   "ok_negative": true,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 35,
+   "split": "dev",
+   "category": "absent",
+   "query": "income tax deduction for team sponsors",
+   "scope": "all",
+   "type": "no_match",
+   "top1": null,
+   "returned": [],
+   "total_ms": 666.6,
+   "expect": {
+    "type": "no_match"
+   },
+   "corrections": [],
+   "top_score": null,
+   "ok_top1": null,
+   "ok_coverage": null,
+   "ok_negative": true,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 36,
+   "split": "dev",
+   "category": "ambiguous",
+   "query": "voltage",
+   "scope": "all",
+   "type": "results",
+   "top1": "T 11.1.2",
+   "returned": [
+    "T 11.1.2",
+    "EV 6.1.5",
+    "EV 5.4.3",
+    "EV 4.2.1",
+    "T 11.1.5",
+    "EV 3.2.4",
+    "EV 4.1.2",
+    "T 11.1.4"
+   ],
+   "total_ms": 563.4,
+   "expect": {
+    "type": "ambiguous",
+    "accept_top1": [
+     "EV 4.1.1",
+     "T 11.1.2",
+     "EV 1.2.1",
+     "EV 1.1.1"
+    ]
+   },
+   "corrections": [],
+   "top_score": 2.697,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 37,
+   "split": "dev",
+   "category": "numeric",
+   "query": "skidpad circle diameter",
+   "scope": "all",
+   "type": "results",
+   "top1": "D 4.1.2",
+   "returned": [
+    "D 4.1.2"
+   ],
+   "total_ms": 703.3,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "D 4.1.2"
+    ]
+   },
+   "corrections": [],
+   "top_score": 7.169,
+   "ok_top1": true,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 38,
+   "split": "dev",
+   "category": "numeric",
+   "query": "endurance length",
+   "scope": "all",
+   "type": "results",
+   "top1": "D 7.1.3",
+   "returned": [
+    "D 7.1.3",
+    "D 7.2.5",
+    "D 7.9.5",
+    "D 7.9.1",
+    "D 7.7.4",
+    "D 7.2.3",
+    "D 7.6.6"
+   ],
+   "total_ms": 649.1,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "D 7.1.3",
+     "D 7.1.2"
+    ],
+    "must_include": [
+     "D 7.1.3"
+    ]
+   },
+   "corrections": [],
+   "top_score": 2.973,
+   "ok_top1": true,
+   "ok_coverage": true,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": true
+  },
+  {
+   "id": 39,
+   "split": "dev",
+   "category": "paraphrase_table",
+   "query": "penalty for knocking over a cone",
+   "scope": "all",
+   "type": "results",
+   "top1": "D 10.1.2",
+   "returned": [
+    "D 10.1.2"
+   ],
+   "total_ms": 968.6,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "D 10.1.7",
+     "D 10.1.4",
+     "D 10.1.2"
+    ],
+    "must_include": [
+     "D 10.1.7"
+    ]
+   },
+   "corrections": [],
+   "top_score": 7.497,
+   "ok_top1": true,
+   "ok_coverage": false,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": false
+  },
+  {
+   "id": 40,
+   "split": "dev",
+   "category": "numeric",
+   "query": "jacks lift height",
+   "scope": "all",
+   "type": "results",
+   "top1": "T 13.2.3",
+   "returned": [
+    "T 13.2.3",
+    "T 13.2.2",
+    "T 13.2.1",
+    "IN 9.2.3",
+    "A 6.4.6"
+   ],
+   "total_ms": 732.4,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 13.2.1"
+    ]
+   },
+   "corrections": [],
+   "top_score": 0.563,
+   "ok_top1": false,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": false
+  }
+ ],
+ "failures": [
+  {
+   "id": 9,
+   "split": "dev",
+   "category": "paraphrase_applicability",
+   "query": "What happens if I brake and accelerate together?",
+   "scope": "all",
+   "type": "results",
+   "top1": "T 15.1.4",
+   "returned": [
+    "T 15.1.4",
+    "T 11.6.7",
+    "T 11.6.2",
+    "T 11.6.4",
+    "T 11.6.1",
+    "T 11.6.5",
+    "T 6.1.13",
+    "EV 4.11.7"
+   ],
+   "total_ms": 554.5,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 11.6.1",
+     "T 11.6.2"
+    ],
+    "must_include": [
+     "T 11.6.1",
+     "T 11.6.2"
+    ]
+   },
+   "corrections": [],
+   "top_score": 1.691,
+   "ok_top1": false,
+   "ok_coverage": false,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": false
+  },
+  {
+   "id": 14,
+   "split": "dev",
+   "category": "numeric",
+   "query": "how many shutdown buttons",
+   "scope": "all",
+   "type": "results",
+   "top1": "T 11.4.4",
+   "returned": [
+    "T 11.4.4",
+    "T 11.4.1",
+    "T 11.4.2",
+    "T 11.4.3",
+    "EV 6.1.2",
+    "T 11.4.5",
+    "T 11.4.6",
+    "T 11.4.7"
+   ],
+   "total_ms": 463.4,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 11.4.1"
+    ]
+   },
+   "corrections": [],
+   "top_score": 5.867,
+   "ok_top1": false,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": false
+  },
+  {
+   "id": 39,
+   "split": "dev",
+   "category": "paraphrase_table",
+   "query": "penalty for knocking over a cone",
+   "scope": "all",
+   "type": "results",
+   "top1": "D 10.1.2",
+   "returned": [
+    "D 10.1.2"
+   ],
+   "total_ms": 968.6,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "D 10.1.7",
+     "D 10.1.4",
+     "D 10.1.2"
+    ],
+    "must_include": [
+     "D 10.1.7"
+    ]
+   },
+   "corrections": [],
+   "top_score": 7.497,
+   "ok_top1": true,
+   "ok_coverage": false,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": false
+  },
+  {
+   "id": 40,
+   "split": "dev",
+   "category": "numeric",
+   "query": "jacks lift height",
+   "scope": "all",
+   "type": "results",
+   "top1": "T 13.2.3",
+   "returned": [
+    "T 13.2.3",
+    "T 13.2.2",
+    "T 13.2.1",
+    "IN 9.2.3",
+    "A 6.4.6"
+   ],
+   "total_ms": 732.4,
+   "expect": {
+    "type": "codes",
+    "accept_top1": [
+     "T 13.2.1"
+    ]
+   },
+   "corrections": [],
+   "top_score": 0.563,
+   "ok_top1": false,
+   "ok_coverage": null,
+   "ok_negative": null,
+   "ok_filter": null,
+   "pass": false
+  }
+ ]
+}

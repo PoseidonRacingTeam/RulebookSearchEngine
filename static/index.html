@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <title>Rulebook Search Engine</title>
+  <link rel="icon" href="/static/fsg-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css?v=0.3.3">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img id="logo" class="logo" src="/static/fsg-logo.svg" alt="Formula Student Germany" width="127" height="54">
+      <h1>Rulebook Search Engine</h1>
+    </div>
+    <div class="toolbar">
+      <div class="status" id="status" data-state="loading">
+        <span class="dot"></span><span id="status-text">Starting…</span>
+      </div>
+      <button type="button" id="settings-btn" class="iconbtn" aria-label="Settings" aria-haspopup="dialog" aria-expanded="false" aria-controls="settings">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3.2"></circle>
+          <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.03 1.56V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.11-1.56 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1.03H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.65 8.9a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1.03-1.56V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1.03 1.56 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9a1.7 1.7 0 0 0 1.56 1.03H21a2 2 0 1 1 0 4h-.09A1.7 1.7 0 0 0 19.4 15z"></path>
+        </svg>
+      </button>
+      <div id="settings" class="popover" role="dialog" aria-label="Settings" hidden>
+        <div class="pop-section">
+          <h2>Preferences</h2>
+          <div class="pref">
+            <div class="pref-label">
+              <span>Vehicle class</span>
+              <small>EV and CV also include the general rules that apply to that class.</small>
+            </div>
+            <div class="segmented" role="radiogroup" aria-label="Vehicle class" data-pref="scope">
+              <span class="seg-thumb" aria-hidden="true"></span>
+              <button type="button" role="radio" aria-checked="true" data-value="ev">EV</button>
+              <button type="button" role="radio" aria-checked="false" data-value="cv">CV</button>
+              <button type="button" role="radio" aria-checked="false" data-value="all">All</button>
+            </div>
+          </div>
+          <div class="pref">
+            <div class="pref-label">
+              <span>Search as you type</span>
+              <small>Results update while you type; Enter still searches immediately.</small>
+            </div>
+            <div class="segmented" role="radiogroup" aria-label="Search as you type" data-pref="live">
+              <span class="seg-thumb" aria-hidden="true"></span>
+              <button type="button" role="radio" aria-checked="true" data-value="on">On</button>
+              <button type="button" role="radio" aria-checked="false" data-value="off">Off</button>
+            </div>
+          </div>
+        </div>
+        <div class="pop-section keys">
+          <h2>Keyboard</h2>
+          <dl class="keys-list">
+            <dt>/</dt><dd>Focus the search field</dd>
+            <dt>↓ ↑</dt><dd>Move between results</dd>
+            <dt>Enter</dt><dd>Open the PDF at the selected rule</dd>
+            <dt>→ ←</dt><dd>Show more / show less</dd>
+            <dt>P</dt><dd>Pin or unpin the selected rule</dd>
+            <dt>Esc</dt><dd>Back to the search field</dd>
+          </dl>
+        </div>
+        <div class="pop-foot" id="docinfo">Loading rulebook…</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <form id="search-form" autocomplete="off">
+      <div class="searchrow">
+        <div class="field">
+          <svg class="field-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+          <input id="q" type="search" placeholder="Search the rulebook — a question, a phrase or a rule code (T 4.11.1)" aria-label="Search" disabled>
+        </div>
+        <button id="go" type="submit" disabled hidden>Search</button>
+      </div>
+      <div class="filters">
+        <span class="scope-chip" id="scope-chip" title="Change under Settings › Preferences">EV</span>
+        <button type="button" id="pdf-toggle" class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg><span>Show PDF</span></button>
+      </div>
+    </form>
+
+    <section id="setup" class="panel">
+      <h2>Setting up</h2>
+      <ol id="steps"></ol>
+      <p id="setup-error" class="error" hidden></p>
+    </section>
+
+    <section id="home" class="home" hidden>
+      <div class="home-block" id="pins-block" hidden>
+        <h2>Pinned rules</h2>
+        <ul id="pins"></ul>
+      </div>
+      <div class="home-block" id="recent-block" hidden>
+        <h2>Recent searches <button type="button" id="recent-clear" class="linkbtn">Clear</button></h2>
+        <ul id="recent"></ul>
+      </div>
+    </section>
+
+    <section id="meta" class="meta" hidden></section>
+    <section id="results"></section>
+  </main>
+
+  <aside id="pdfpane" hidden>
+    <div class="pdfbar">
+      <div class="pdftitle">
+        <span class="pdf-kicker">Rulebook PDF</span>
+        <span id="pdf-label">Page 1</span>
+      </div>
+      <div class="pdfactions">
+        <a id="pdf-open" class="pill" href="/pdf" target="_blank" rel="noopener" title="Open the PDF in a new browser tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg><span>New tab</span></a>
+        <button type="button" id="pdf-close" class="pill primary" title="Close the PDF (Esc)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Close</span></button>
+      </div>
+    </div>
+    <iframe id="pdfframe" title="Rulebook PDF"></iframe>
+  </aside>
+
+  <template id="tpl-result">
+    <article class="rule" tabindex="-1">
+      <header class="rulehead">
+        <div class="codes">
+          <a class="code" href="#"></a>
+          <button type="button" class="pin" aria-pressed="false" title="Pin rule (P)" aria-label="Pin rule">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+          </button>
+        </div>
+        <div class="path"></div>
+        <div class="badges"></div>
+      </header>
+      <div class="body"></div>
+      <footer class="rulefoot">
+        <span class="pages"></span>
+        <button type="button" class="pill more" aria-expanded="false" title="Section context, referenced rules and figures (→ / ←)"><span>Show more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <span class="why"></span>
+      </footer>
+      <div class="extra" hidden></div>
+    </article>
+  </template>
+
+  <script src="/static/app.js?v=0.3.3"></script>
+</body>
+</html>
